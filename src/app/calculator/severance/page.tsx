@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Briefcase } from "lucide-react";
 import {
   calculateSeverance,
   type SeveranceResult,
@@ -36,14 +37,19 @@ export default function SeveranceCalculatorPage() {
 
   return (
     <div className="mx-auto w-full max-w-2xl flex-1 px-4 py-12">
-      <h1 className="text-2xl font-bold">퇴직금 계산기</h1>
-      <p className="mt-2 text-zinc-600">
+      <div className="flex items-center gap-3">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-amber-500 text-white">
+          <Briefcase className="h-5 w-5" strokeWidth={2} />
+        </span>
+        <h1 className="text-2xl font-bold">퇴직금 계산기</h1>
+      </div>
+      <p className="mt-3 text-zinc-600">
         평균임금을 기준으로 예상 퇴직금을 계산합니다.
       </p>
 
       <form
         onSubmit={handleCalculate}
-        className="mt-8 space-y-4 rounded-lg border border-zinc-200 bg-white p-6"
+        className="mt-8 space-y-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm"
       >
         <div className="grid grid-cols-2 gap-4">
           <div>
@@ -54,7 +60,7 @@ export default function SeveranceCalculatorPage() {
               type="date"
               value={joinDate}
               onChange={(e) => setJoinDate(e.target.value)}
-              className="mt-1 w-full rounded border border-zinc-300 px-3 py-2"
+              className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
             />
           </div>
           <div>
@@ -65,7 +71,7 @@ export default function SeveranceCalculatorPage() {
               type="date"
               value={resignDate}
               onChange={(e) => setResignDate(e.target.value)}
-              className="mt-1 w-full rounded border border-zinc-300 px-3 py-2"
+              className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
             />
           </div>
         </div>
@@ -79,7 +85,7 @@ export default function SeveranceCalculatorPage() {
             inputMode="numeric"
             value={threeMonthWageTotal}
             onChange={(e) => setThreeMonthWageTotal(e.target.value)}
-            className="mt-1 w-full rounded border border-zinc-300 px-3 py-2 text-right"
+            className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
             placeholder="예: 12000000"
           />
         </div>
@@ -94,7 +100,7 @@ export default function SeveranceCalculatorPage() {
               inputMode="numeric"
               value={annualBonusTotal}
               onChange={(e) => setAnnualBonusTotal(e.target.value)}
-              className="mt-1 w-full rounded border border-zinc-300 px-3 py-2 text-right"
+              className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
             />
           </div>
           <div>
@@ -106,60 +112,62 @@ export default function SeveranceCalculatorPage() {
               inputMode="numeric"
               value={annualLeaveAllowance}
               onChange={(e) => setAnnualLeaveAllowance(e.target.value)}
-              className="mt-1 w-full rounded border border-zinc-300 px-3 py-2 text-right"
+              className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
             />
           </div>
         </div>
 
         <button
           type="submit"
-          className="w-full rounded bg-zinc-900 py-3 font-medium text-white hover:bg-zinc-700"
+          className="w-full rounded-lg bg-amber-500 py-3 font-medium text-white transition-colors hover:bg-amber-600"
         >
           계산하기
         </button>
       </form>
 
       {result && (
-        <div className="mt-6 rounded-lg border border-zinc-200 bg-white p-6">
+        <div className="mt-6 overflow-hidden rounded-xl border border-amber-200 bg-white shadow-sm">
           {!result.eligible && (
-            <div className="mb-4 rounded border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+            <div className="border-b border-rose-200 bg-rose-50 p-3 text-sm text-rose-800">
               근속기간이 1년 미만이라 근로기준법상 퇴직금 지급 대상이
               아닙니다. 참고용으로만 확인해주세요.
             </div>
           )}
-          <div className="text-center">
-            <p className="text-sm text-zinc-500">예상 퇴직금</p>
-            <p className="mt-1 text-3xl font-bold text-zinc-900">
+          <div className="bg-amber-50 px-6 py-6 text-center">
+            <p className="text-sm text-amber-700">예상 퇴직금</p>
+            <p className="mt-1 text-3xl font-bold text-amber-900">
               {formatWon(result.severancePay)}
             </p>
-            <p className="mt-1 text-sm text-zinc-400">
+            <p className="mt-1 text-sm text-amber-600">
               근속 {result.workedDays.toLocaleString("ko-KR")}일 (약{" "}
               {result.workedYears}년)
             </p>
           </div>
 
-          <table className="mt-6 w-full text-sm">
-            <tbody>
-              <tr className="border-t border-zinc-100">
-                <td className="py-2 text-zinc-500">1일 평균임금</td>
-                <td className="py-2 text-right">
-                  {formatWon(result.averageDailyWage)}
-                </td>
-              </tr>
-              <tr className="border-t border-zinc-100">
-                <td className="py-2 text-zinc-500">평균임금 산정 기간</td>
-                <td className="py-2 text-right">
-                  {result.threeMonthPeriodDays}일
-                </td>
-              </tr>
-              <tr className="border-t border-zinc-100">
-                <td className="py-2 text-zinc-500">총 재직일수</td>
-                <td className="py-2 text-right">
-                  {result.workedDays.toLocaleString("ko-KR")}일
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="px-6 pb-6 pt-2">
+            <table className="w-full text-sm">
+              <tbody>
+                <tr className="border-t border-zinc-100">
+                  <td className="py-2 text-zinc-500">1일 평균임금</td>
+                  <td className="py-2 text-right">
+                    {formatWon(result.averageDailyWage)}
+                  </td>
+                </tr>
+                <tr className="border-t border-zinc-100">
+                  <td className="py-2 text-zinc-500">평균임금 산정 기간</td>
+                  <td className="py-2 text-right">
+                    {result.threeMonthPeriodDays}일
+                  </td>
+                </tr>
+                <tr className="border-t border-zinc-100">
+                  <td className="py-2 text-zinc-500">총 재직일수</td>
+                  <td className="py-2 text-right">
+                    {result.workedDays.toLocaleString("ko-KR")}일
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 

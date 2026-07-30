@@ -1,3 +1,4 @@
+import { RefreshCw } from "lucide-react";
 import { getLatestExchangeRates } from "@/lib/rates/exchange";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
@@ -9,8 +10,13 @@ export default async function RatesPage() {
 
   return (
     <div className="mx-auto w-full max-w-2xl flex-1 px-4 py-12">
-      <h1 className="text-2xl font-bold">오늘의 환율</h1>
-      <p className="mt-2 text-zinc-600">
+      <div className="flex items-center gap-3">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-violet-500 text-white">
+          <RefreshCw className="h-5 w-5" strokeWidth={2} />
+        </span>
+        <h1 className="text-2xl font-bold">오늘의 환율</h1>
+      </div>
+      <p className="mt-3 text-zinc-600">
         한국수출입은행 매매기준율을 매일 자동으로 갱신합니다.
       </p>
 
@@ -29,16 +35,16 @@ export default async function RatesPage() {
       )}
 
       {rates.length > 0 && (
-        <div className="mt-8 rounded-lg border border-zinc-200 bg-white">
-          <div className="border-b border-zinc-100 px-5 py-3 text-xs text-zinc-400">
+        <div className="mt-8 overflow-hidden rounded-xl border border-violet-200 bg-white shadow-sm">
+          <div className="border-b border-violet-100 bg-violet-50 px-5 py-3 text-xs font-medium text-violet-700">
             {baseDate} 기준
           </div>
           <table className="w-full text-sm">
             <tbody>
               {rates.map((rate) => (
-                <tr key={rate.currency_code} className="border-b border-zinc-50 last:border-0">
+                <tr key={rate.currency_code} className="border-b border-zinc-50 last:border-0 hover:bg-zinc-50">
                   <td className="px-5 py-3 text-zinc-500">{rate.currency_name}</td>
-                  <td className="px-5 py-3 text-right font-mono">
+                  <td className="px-5 py-3 text-right font-mono text-zinc-900">
                     {rate.deal_base_rate.toLocaleString("ko-KR", {
                       minimumFractionDigits: 2,
                     })}

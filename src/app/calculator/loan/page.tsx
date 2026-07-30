@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Landmark } from "lucide-react";
 import {
   calculateLoan,
   type LoanResult,
@@ -38,14 +39,19 @@ export default function LoanCalculatorPage() {
 
   return (
     <div className="mx-auto w-full max-w-2xl flex-1 px-4 py-12">
-      <h1 className="text-2xl font-bold">대출이자 계산기</h1>
-      <p className="mt-2 text-zinc-600">
+      <div className="flex items-center gap-3">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-500 text-white">
+          <Landmark className="h-5 w-5" strokeWidth={2} />
+        </span>
+        <h1 className="text-2xl font-bold">대출이자 계산기</h1>
+      </div>
+      <p className="mt-3 text-zinc-600">
         원리금균등·원금균등 상환 방식별 월 상환액과 총 이자를 계산합니다.
       </p>
 
       <form
         onSubmit={handleCalculate}
-        className="mt-8 space-y-4 rounded-lg border border-zinc-200 bg-white p-6"
+        className="mt-8 space-y-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm"
       >
         <div>
           <label className="block text-sm font-medium text-zinc-700">
@@ -56,7 +62,7 @@ export default function LoanCalculatorPage() {
             inputMode="numeric"
             value={principal}
             onChange={(e) => setPrincipal(e.target.value)}
-            className="mt-1 w-full rounded border border-zinc-300 px-3 py-2 text-right"
+            className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             placeholder="예: 100000000"
           />
         </div>
@@ -72,7 +78,7 @@ export default function LoanCalculatorPage() {
               min={0}
               value={annualRate}
               onChange={(e) => setAnnualRate(e.target.value)}
-              className="mt-1 w-full rounded border border-zinc-300 px-3 py-2 text-right"
+              className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             />
           </div>
           <div>
@@ -84,7 +90,7 @@ export default function LoanCalculatorPage() {
               min={1}
               value={years}
               onChange={(e) => setYears(e.target.value)}
-              className="mt-1 w-full rounded border border-zinc-300 px-3 py-2 text-right"
+              className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             />
           </div>
         </div>
@@ -97,10 +103,10 @@ export default function LoanCalculatorPage() {
             <button
               type="button"
               onClick={() => setRepaymentType("equalInstallment")}
-              className={`rounded border px-3 py-2 text-sm ${
+              className={`rounded-lg border px-3 py-2 text-sm transition-colors ${
                 repaymentType === "equalInstallment"
-                  ? "border-zinc-900 bg-zinc-900 text-white"
-                  : "border-zinc-300 text-zinc-600"
+                  ? "border-blue-600 bg-blue-600 text-white"
+                  : "border-zinc-300 text-zinc-600 hover:border-zinc-400"
               }`}
             >
               원리금균등상환
@@ -108,10 +114,10 @@ export default function LoanCalculatorPage() {
             <button
               type="button"
               onClick={() => setRepaymentType("equalPrincipal")}
-              className={`rounded border px-3 py-2 text-sm ${
+              className={`rounded-lg border px-3 py-2 text-sm transition-colors ${
                 repaymentType === "equalPrincipal"
-                  ? "border-zinc-900 bg-zinc-900 text-white"
-                  : "border-zinc-300 text-zinc-600"
+                  ? "border-blue-600 bg-blue-600 text-white"
+                  : "border-zinc-300 text-zinc-600 hover:border-zinc-400"
               }`}
             >
               원금균등상환
@@ -121,48 +127,50 @@ export default function LoanCalculatorPage() {
 
         <button
           type="submit"
-          className="w-full rounded bg-zinc-900 py-3 font-medium text-white hover:bg-zinc-700"
+          className="w-full rounded-lg bg-blue-600 py-3 font-medium text-white transition-colors hover:bg-blue-700"
         >
           계산하기
         </button>
       </form>
 
       {result && (
-        <div className="mt-6 rounded-lg border border-zinc-200 bg-white p-6">
-          <div className="text-center">
-            <p className="text-sm text-zinc-500">
+        <div className="mt-6 overflow-hidden rounded-xl border border-blue-200 bg-white shadow-sm">
+          <div className="bg-blue-50 px-6 py-6 text-center">
+            <p className="text-sm text-blue-700">
               {repaymentType === "equalInstallment"
                 ? "월 상환액 (매월 동일)"
                 : "첫 회차 상환액"}
             </p>
-            <p className="mt-1 text-3xl font-bold text-zinc-900">
+            <p className="mt-1 text-3xl font-bold text-blue-900">
               {formatWon(result.firstMonthPayment)}
             </p>
             {repaymentType === "equalPrincipal" && (
-              <p className="mt-1 text-sm text-zinc-400">
+              <p className="mt-1 text-sm text-blue-600">
                 마지막 회차 {formatWon(result.lastMonthPayment)}
               </p>
             )}
           </div>
 
-          <table className="mt-6 w-full text-sm">
-            <tbody>
-              <tr className="border-t border-zinc-100">
-                <td className="py-2 text-zinc-500">총 상환액</td>
-                <td className="py-2 text-right">
-                  {formatWon(result.totalPayment)}
-                </td>
-              </tr>
-              <tr className="border-t border-zinc-100">
-                <td className="py-2 text-zinc-500">총 이자</td>
-                <td className="py-2 text-right">
-                  {formatWon(result.totalInterest)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="px-6 pt-2">
+            <table className="w-full text-sm">
+              <tbody>
+                <tr className="border-t border-zinc-100">
+                  <td className="py-2 text-zinc-500">총 상환액</td>
+                  <td className="py-2 text-right">
+                    {formatWon(result.totalPayment)}
+                  </td>
+                </tr>
+                <tr className="border-t border-zinc-100">
+                  <td className="py-2 text-zinc-500">총 이자</td>
+                  <td className="py-2 text-right">
+                    {formatWon(result.totalInterest)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-          <details className="mt-4 text-sm">
+          <details className="px-6 pb-6 pt-4 text-sm">
             <summary className="cursor-pointer text-zinc-500">
               월별 상환 스케줄 보기
             </summary>
