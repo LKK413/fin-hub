@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "핀허브 — 재테크 계산기 & 금융 정보",
   description: "연봉 실수령액, 대출이자 등 재테크 계산기와 환율·금리 정보를 한 곳에서.",
+  verification: {
+    google: "qE0FgXC0k-U_WNA2YFi0U9vm_28JJOjjTMVbOHvQxOM",
+  },
 };
 
 export default function RootLayout({
