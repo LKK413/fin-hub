@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { PiggyBank } from "lucide-react";
+import Header from "@/components/Header";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -39,30 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-zinc-50 text-zinc-900">
-        <header className="sticky top-0 z-10 border-b border-zinc-200 bg-white/80 backdrop-blur">
-          <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4">
-            <a href="/" className="flex items-center gap-2 text-lg font-bold text-zinc-900">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white">
-                <PiggyBank className="h-5 w-5" strokeWidth={2} />
-              </span>
-              핀허브
-            </a>
-            <nav className="flex gap-5 text-sm font-medium text-zinc-500">
-              <a href="/calculator/salary" className="transition-colors hover:text-indigo-600">
-                연봉 계산기
-              </a>
-              <a href="/calculator/loan" className="transition-colors hover:text-indigo-600">
-                대출이자 계산기
-              </a>
-              <a href="/calculator/severance" className="transition-colors hover:text-indigo-600">
-                퇴직금 계산기
-              </a>
-              <a href="/rates" className="transition-colors hover:text-indigo-600">
-                오늘의 환율
-              </a>
-            </nav>
-          </div>
-        </header>
+        <Header />
         <main className="flex flex-1 flex-col">{children}</main>
         <footer className="border-t border-zinc-200 bg-white py-8 text-center text-xs text-zinc-400">
           <p>
