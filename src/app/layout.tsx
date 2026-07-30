@@ -50,6 +50,9 @@ export default function RootLayout({
               <a href="/calculator/loan" className="hover:text-zinc-900">
                 대출이자 계산기
               </a>
+              <a href="/calculator/severance" className="hover:text-zinc-900">
+                퇴직금 계산기
+              </a>
               <a href="/rates" className="hover:text-zinc-900">
                 오늘의 환율
               </a>

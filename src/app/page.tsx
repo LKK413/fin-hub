@@ -12,10 +12,10 @@ const calculators = [
     available: true,
   },
   {
-    href: "#",
+    href: "/calculator/severance",
     title: "퇴직금 계산기",
     description: "평균임금 기준 예상 퇴직금을 계산합니다.",
-    available: false,
+    available: true,
   },
   {
     href: "/rates",
