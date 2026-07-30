@@ -1,0 +1,25 @@
+name: Fetch Exchange Rates
+
+on:
+  schedule:
+    # 매일 09:00 KST(UTC 00:00) — 한국수출입은행 매매기준율은 보통 그 전에 고시됨
+    - cron: "0 0 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - run: npm ci
+
+      - run: node scripts/fetch-exchange-rates.mjs
+        env:
+          EXIM_API_KEY: ${{ secrets.EXIM_API_KEY }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
