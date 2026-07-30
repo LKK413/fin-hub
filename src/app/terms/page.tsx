@@ -70,7 +70,7 @@ export default function TermsPage() {
             제6조 (문의)
           </h2>
           <p className="mt-2">
-            서비스 이용과 관련한 문의는 iceprince040413@gmail.com 으로
+            서비스 이용과 관련한 문의는 foruarla@gmail.com 으로
             연락해 주시기 바랍니다.
           </p>
         </section>
