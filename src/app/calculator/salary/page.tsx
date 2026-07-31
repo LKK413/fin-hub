@@ -31,10 +31,10 @@ export default function SalaryCalculatorPage() {
   return (
     <div className="mx-auto w-full max-w-2xl flex-1 px-4 py-12">
       <div className="flex items-center gap-3">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-emerald-500 text-white">
-          <Banknote className="h-5 w-5" strokeWidth={2} />
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-zinc-900 text-amber-400">
+          <Banknote className="h-5 w-5" strokeWidth={1.75} />
         </span>
-        <h1 className="text-2xl font-bold">연봉 실수령액 계산기</h1>
+        <h1 className="font-display text-2xl font-bold">연봉 실수령액 계산기</h1>
       </div>
       <p className="mt-3 text-zinc-600">
         국민연금·건강보험·고용보험·소득세를 반영한 월 실수령액을 계산합니다.
@@ -53,7 +53,7 @@ export default function SalaryCalculatorPage() {
             inputMode="numeric"
             value={annualSalary}
             onChange={(e) => setAnnualSalary(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+            className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
             placeholder="예: 50000000"
           />
         </div>
@@ -68,7 +68,7 @@ export default function SalaryCalculatorPage() {
               min={1}
               value={dependents}
               onChange={(e) => setDependents(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+              className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
             />
           </div>
           <div>
@@ -80,27 +80,27 @@ export default function SalaryCalculatorPage() {
               min={0}
               value={childrenUnder20}
               onChange={(e) => setChildrenUnder20(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100"
+              className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
             />
           </div>
         </div>
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-emerald-600 py-3 font-medium text-white transition-colors hover:bg-emerald-700"
+          className="w-full rounded-lg bg-zinc-900 py-3 font-medium text-white transition-colors hover:bg-zinc-800"
         >
           계산하기
         </button>
       </form>
 
       {result && (
-        <div className="mt-6 overflow-hidden rounded-xl border border-emerald-200 bg-white shadow-sm">
-          <div className="bg-emerald-50 px-6 py-6 text-center">
-            <p className="text-sm text-emerald-700">월 예상 실수령액</p>
-            <p className="mt-1 text-3xl font-bold text-emerald-900">
+        <div className="mt-6 overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
+          <div className="bg-zinc-950 px-6 py-6 text-center">
+            <p className="text-sm text-amber-400">월 예상 실수령액</p>
+            <p className="mt-1 font-display text-3xl font-bold text-white">
               {formatWon(result.monthlyNetSalary)}
             </p>
-            <p className="mt-1 text-sm text-emerald-600">
+            <p className="mt-1 text-sm text-zinc-400">
               연 실수령액 약 {formatWon(result.annualNetSalary)}
             </p>
           </div>

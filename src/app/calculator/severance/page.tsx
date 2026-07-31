@@ -38,10 +38,10 @@ export default function SeveranceCalculatorPage() {
   return (
     <div className="mx-auto w-full max-w-2xl flex-1 px-4 py-12">
       <div className="flex items-center gap-3">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-amber-500 text-white">
-          <Briefcase className="h-5 w-5" strokeWidth={2} />
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-zinc-900 text-amber-400">
+          <Briefcase className="h-5 w-5" strokeWidth={1.75} />
         </span>
-        <h1 className="text-2xl font-bold">퇴직금 계산기</h1>
+        <h1 className="font-display text-2xl font-bold">퇴직금 계산기</h1>
       </div>
       <p className="mt-3 text-zinc-600">
         평균임금을 기준으로 예상 퇴직금을 계산합니다.
@@ -119,26 +119,26 @@ export default function SeveranceCalculatorPage() {
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-amber-500 py-3 font-medium text-white transition-colors hover:bg-amber-600"
+          className="w-full rounded-lg bg-zinc-900 py-3 font-medium text-white transition-colors hover:bg-zinc-800"
         >
           계산하기
         </button>
       </form>
 
       {result && (
-        <div className="mt-6 overflow-hidden rounded-xl border border-amber-200 bg-white shadow-sm">
+        <div className="mt-6 overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
           {!result.eligible && (
             <div className="border-b border-rose-200 bg-rose-50 p-3 text-sm text-rose-800">
               근속기간이 1년 미만이라 근로기준법상 퇴직금 지급 대상이
               아닙니다. 참고용으로만 확인해주세요.
             </div>
           )}
-          <div className="bg-amber-50 px-6 py-6 text-center">
-            <p className="text-sm text-amber-700">예상 퇴직금</p>
-            <p className="mt-1 text-3xl font-bold text-amber-900">
+          <div className="bg-zinc-950 px-6 py-6 text-center">
+            <p className="text-sm text-amber-400">예상 퇴직금</p>
+            <p className="mt-1 font-display text-3xl font-bold text-white">
               {formatWon(result.severancePay)}
             </p>
-            <p className="mt-1 text-sm text-amber-600">
+            <p className="mt-1 text-sm text-zinc-400">
               근속 {result.workedDays.toLocaleString("ko-KR")}일 (약{" "}
               {result.workedYears}년)
             </p>

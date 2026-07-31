@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Gowun_Batang } from "next/font/google";
 import Header from "@/components/Header";
 import "./globals.css";
 
@@ -11,6 +11,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const serifKr = Gowun_Batang({
+  variable: "--font-serif-kr",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${serifKr.variable} h-full antialiased`}
     >
       <head>
         <script
@@ -41,14 +47,14 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-zinc-50 text-zinc-900">
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
-        <footer className="border-t border-zinc-200 bg-white py-8 text-center text-xs text-zinc-400">
+        <footer className="border-t border-zinc-200 bg-zinc-950 py-8 text-center text-xs text-zinc-500">
           <p>
             본 사이트의 계산 결과는 추정치이며 법적 효력이 없습니다. 정확한 금액은 국세청·4대보험공단 자료를 참고하세요.
           </p>
           <nav className="mt-3 flex justify-center gap-4">
-            <a href="/about" className="hover:text-zinc-600">사이트 소개</a>
-            <a href="/privacy" className="hover:text-zinc-600">개인정보처리방침</a>
-            <a href="/terms" className="hover:text-zinc-600">이용약관</a>
+            <a href="/about" className="transition-colors hover:text-amber-400">사이트 소개</a>
+            <a href="/privacy" className="transition-colors hover:text-amber-400">개인정보처리방침</a>
+            <a href="/terms" className="transition-colors hover:text-amber-400">이용약관</a>
           </nav>
         </footer>
       </body>
