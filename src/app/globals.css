@@ -9,3 +9,18 @@
 body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+@keyframes result-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-result-in {
+  animation: result-in 0.4s ease-out;
+}

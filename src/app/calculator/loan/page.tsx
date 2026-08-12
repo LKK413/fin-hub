@@ -9,6 +9,7 @@ import {
 } from "@/lib/calculators/loan";
 import { useCalculationHistory } from "@/lib/useCalculationHistory";
 import { HistoryList } from "@/components/HistoryList";
+import { CountUpNumber } from "@/components/CountUpNumber";
 
 function formatWon(value: number): string {
   return value.toLocaleString("ko-KR") + "원";
@@ -128,7 +129,7 @@ export default function LoanCalculatorPage() {
             <button
               type="button"
               onClick={() => setRepaymentType("equalInstallment")}
-              className={`rounded-lg border px-3 py-2 text-sm transition-colors ${
+              className={`rounded-lg border px-3 py-2 text-sm transition-all active:scale-[0.98] ${
                 repaymentType === "equalInstallment"
                   ? "border-zinc-900 bg-zinc-900 text-white"
                   : "border-zinc-300 text-zinc-600 hover:border-zinc-400"
@@ -139,7 +140,7 @@ export default function LoanCalculatorPage() {
             <button
               type="button"
               onClick={() => setRepaymentType("equalPrincipal")}
-              className={`rounded-lg border px-3 py-2 text-sm transition-colors ${
+              className={`rounded-lg border px-3 py-2 text-sm transition-all active:scale-[0.98] ${
                 repaymentType === "equalPrincipal"
                   ? "border-zinc-900 bg-zinc-900 text-white"
                   : "border-zinc-300 text-zinc-600 hover:border-zinc-400"
@@ -152,14 +153,14 @@ export default function LoanCalculatorPage() {
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-zinc-900 py-3 font-medium text-white transition-colors hover:bg-zinc-800"
+          className="w-full rounded-lg bg-zinc-900 py-3 font-medium text-white transition-all hover:bg-zinc-800 active:scale-[0.98]"
         >
           계산하기
         </button>
       </form>
 
       {result && (
-        <div className="mt-6 overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
+        <div className="mt-6 overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm animate-result-in">
           <div className="bg-zinc-950 px-6 py-6 text-center">
             <p className="text-sm text-amber-400">
               {repaymentType === "equalInstallment"
@@ -167,7 +168,7 @@ export default function LoanCalculatorPage() {
                 : "첫 회차 상환액"}
             </p>
             <p className="mt-1 font-display text-3xl font-bold text-white">
-              {formatWon(result.firstMonthPayment)}
+              <CountUpNumber value={result.firstMonthPayment} formatter={formatWon} />
             </p>
             {repaymentType === "equalPrincipal" && (
               <p className="mt-1 text-sm text-zinc-400">

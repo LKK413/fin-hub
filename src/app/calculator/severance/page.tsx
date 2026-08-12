@@ -8,6 +8,7 @@ import {
 } from "@/lib/calculators/severance";
 import { useCalculationHistory } from "@/lib/useCalculationHistory";
 import { HistoryList } from "@/components/HistoryList";
+import { CountUpNumber } from "@/components/CountUpNumber";
 
 function formatWon(value: number): string {
   return value.toLocaleString("ko-KR") + "원";
@@ -155,14 +156,14 @@ export default function SeveranceCalculatorPage() {
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-zinc-900 py-3 font-medium text-white transition-colors hover:bg-zinc-800"
+          className="w-full rounded-lg bg-zinc-900 py-3 font-medium text-white transition-all hover:bg-zinc-800 active:scale-[0.98]"
         >
           계산하기
         </button>
       </form>
 
       {result && (
-        <div className="mt-6 overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm">
+        <div className="mt-6 overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm animate-result-in">
           {!result.eligible && (
             <div className="border-b border-rose-200 bg-rose-50 p-3 text-sm text-rose-800">
               근속기간이 1년 미만이라 근로기준법상 퇴직금 지급 대상이
@@ -172,7 +173,7 @@ export default function SeveranceCalculatorPage() {
           <div className="bg-zinc-950 px-6 py-6 text-center">
             <p className="text-sm text-amber-400">예상 퇴직금</p>
             <p className="mt-1 font-display text-3xl font-bold text-white">
-              {formatWon(result.severancePay)}
+              <CountUpNumber value={result.severancePay} formatter={formatWon} />
             </p>
             <p className="mt-1 text-sm text-zinc-400">
               근속 {result.workedDays.toLocaleString("ko-KR")}일 (약{" "}
