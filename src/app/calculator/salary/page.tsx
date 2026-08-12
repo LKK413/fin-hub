@@ -3,9 +3,17 @@
 import { useState } from "react";
 import { Banknote } from "lucide-react";
 import { calculateSalary, type SalaryResult } from "@/lib/calculators/salary";
+import { useCalculationHistory } from "@/lib/useCalculationHistory";
+import { HistoryList } from "@/components/HistoryList";
 
 function formatWon(value: number): string {
   return value.toLocaleString("ko-KR") + "원";
+}
+
+interface SalaryInputs {
+  annualSalary: string;
+  dependents: string;
+  childrenUnder20: string;
 }
 
 export default function SalaryCalculatorPage() {
@@ -13,19 +21,34 @@ export default function SalaryCalculatorPage() {
   const [dependents, setDependents] = useState("1");
   const [childrenUnder20, setChildrenUnder20] = useState("0");
   const [result, setResult] = useState<SalaryResult | null>(null);
+  const { history, addEntry } = useCalculationHistory<SalaryInputs>("salary");
+
+  function runCalculation(inputs: SalaryInputs) {
+    const gross = Number(inputs.annualSalary.replace(/[^0-9]/g, ""));
+    if (!gross || gross <= 0) return;
+
+    const calcResult = calculateSalary({
+      annualGrossSalary: gross,
+      dependents: Math.max(1, Number(inputs.dependents) || 1),
+      childrenUnder20: Number(inputs.childrenUnder20) || 0,
+    });
+    setResult(calcResult);
+    addEntry(
+      `연봉 ${formatWon(gross)} → 월 ${formatWon(calcResult.monthlyNetSalary)}`,
+      inputs
+    );
+  }
 
   function handleCalculate(e: React.FormEvent) {
     e.preventDefault();
-    const gross = Number(annualSalary.replace(/[^0-9]/g, ""));
-    if (!gross || gross <= 0) return;
+    runCalculation({ annualSalary, dependents, childrenUnder20 });
+  }
 
-    setResult(
-      calculateSalary({
-        annualGrossSalary: gross,
-        dependents: Math.max(1, Number(dependents) || 1),
-        childrenUnder20: Number(childrenUnder20) || 0,
-      })
-    );
+  function handleSelectHistory(inputs: SalaryInputs) {
+    setAnnualSalary(inputs.annualSalary);
+    setDependents(inputs.dependents);
+    setChildrenUnder20(inputs.childrenUnder20);
+    runCalculation(inputs);
   }
 
   return (
@@ -161,6 +184,8 @@ export default function SalaryCalculatorPage() {
           </div>
         </div>
       )}
+
+      <HistoryList history={history} onSelect={handleSelectHistory} />
 
       <section className="mt-10 space-y-3 text-sm leading-6 text-zinc-600">
         <h2 className="text-base font-semibold text-zinc-800">

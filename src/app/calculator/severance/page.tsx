@@ -6,9 +6,19 @@ import {
   calculateSeverance,
   type SeveranceResult,
 } from "@/lib/calculators/severance";
+import { useCalculationHistory } from "@/lib/useCalculationHistory";
+import { HistoryList } from "@/components/HistoryList";
 
 function formatWon(value: number): string {
   return value.toLocaleString("ko-KR") + "원";
+}
+
+interface SeveranceInputs {
+  joinDate: string;
+  resignDate: string;
+  threeMonthWageTotal: string;
+  annualBonusTotal: string;
+  annualLeaveAllowance: string;
 }
 
 export default function SeveranceCalculatorPage() {
@@ -18,21 +28,47 @@ export default function SeveranceCalculatorPage() {
   const [annualBonusTotal, setAnnualBonusTotal] = useState("0");
   const [annualLeaveAllowance, setAnnualLeaveAllowance] = useState("0");
   const [result, setResult] = useState<SeveranceResult | null>(null);
+  const { history, addEntry } = useCalculationHistory<SeveranceInputs>("severance");
+
+  function runCalculation(inputs: SeveranceInputs) {
+    if (!inputs.joinDate || !inputs.resignDate) return;
+    if (new Date(inputs.resignDate) <= new Date(inputs.joinDate)) return;
+
+    const calcResult = calculateSeverance({
+      joinDate: inputs.joinDate,
+      resignDate: inputs.resignDate,
+      threeMonthWageTotal:
+        Number(inputs.threeMonthWageTotal.replace(/[^0-9]/g, "")) || 0,
+      annualBonusTotal:
+        Number(inputs.annualBonusTotal.replace(/[^0-9]/g, "")) || 0,
+      annualLeaveAllowance:
+        Number(inputs.annualLeaveAllowance.replace(/[^0-9]/g, "")) || 0,
+    });
+    setResult(calcResult);
+    addEntry(
+      `${inputs.joinDate} ~ ${inputs.resignDate} → ${formatWon(calcResult.severancePay)}`,
+      inputs
+    );
+  }
 
   function handleCalculate(e: React.FormEvent) {
     e.preventDefault();
-    if (!joinDate || !resignDate) return;
-    if (new Date(resignDate) <= new Date(joinDate)) return;
+    runCalculation({
+      joinDate,
+      resignDate,
+      threeMonthWageTotal,
+      annualBonusTotal,
+      annualLeaveAllowance,
+    });
+  }
 
-    setResult(
-      calculateSeverance({
-        joinDate,
-        resignDate,
-        threeMonthWageTotal: Number(threeMonthWageTotal.replace(/[^0-9]/g, "")) || 0,
-        annualBonusTotal: Number(annualBonusTotal.replace(/[^0-9]/g, "")) || 0,
-        annualLeaveAllowance: Number(annualLeaveAllowance.replace(/[^0-9]/g, "")) || 0,
-      })
-    );
+  function handleSelectHistory(inputs: SeveranceInputs) {
+    setJoinDate(inputs.joinDate);
+    setResignDate(inputs.resignDate);
+    setThreeMonthWageTotal(inputs.threeMonthWageTotal);
+    setAnnualBonusTotal(inputs.annualBonusTotal);
+    setAnnualLeaveAllowance(inputs.annualLeaveAllowance);
+    runCalculation(inputs);
   }
 
   return (
@@ -170,6 +206,8 @@ export default function SeveranceCalculatorPage() {
           </div>
         </div>
       )}
+
+      <HistoryList history={history} onSelect={handleSelectHistory} />
 
       <section className="mt-10 space-y-3 text-sm leading-6 text-zinc-600">
         <h2 className="text-base font-semibold text-zinc-800">

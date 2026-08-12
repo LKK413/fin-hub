@@ -7,9 +7,18 @@ import {
   type LoanResult,
   type RepaymentType,
 } from "@/lib/calculators/loan";
+import { useCalculationHistory } from "@/lib/useCalculationHistory";
+import { HistoryList } from "@/components/HistoryList";
 
 function formatWon(value: number): string {
   return value.toLocaleString("ko-KR") + "원";
+}
+
+interface LoanInputs {
+  principal: string;
+  annualRate: string;
+  years: string;
+  repaymentType: RepaymentType;
 }
 
 export default function LoanCalculatorPage() {
@@ -19,22 +28,38 @@ export default function LoanCalculatorPage() {
   const [repaymentType, setRepaymentType] =
     useState<RepaymentType>("equalInstallment");
   const [result, setResult] = useState<LoanResult | null>(null);
+  const { history, addEntry } = useCalculationHistory<LoanInputs>("loan");
+
+  function runCalculation(inputs: LoanInputs) {
+    const p = Number(inputs.principal.replace(/[^0-9]/g, ""));
+    const rate = Number(inputs.annualRate);
+    const months = Math.round(Number(inputs.years) * 12);
+    if (!p || p <= 0 || months <= 0 || rate < 0) return;
+
+    const calcResult = calculateLoan({
+      principal: p,
+      annualRatePercent: rate,
+      months,
+      repaymentType: inputs.repaymentType,
+    });
+    setResult(calcResult);
+    addEntry(
+      `${formatWon(p)}, 연 ${inputs.annualRate}%, ${inputs.years}년 → 월 ${formatWon(calcResult.firstMonthPayment)}`,
+      inputs
+    );
+  }
 
   function handleCalculate(e: React.FormEvent) {
     e.preventDefault();
-    const p = Number(principal.replace(/[^0-9]/g, ""));
-    const rate = Number(annualRate);
-    const months = Math.round(Number(years) * 12);
-    if (!p || p <= 0 || months <= 0 || rate < 0) return;
+    runCalculation({ principal, annualRate, years, repaymentType });
+  }
 
-    setResult(
-      calculateLoan({
-        principal: p,
-        annualRatePercent: rate,
-        months,
-        repaymentType,
-      })
-    );
+  function handleSelectHistory(inputs: LoanInputs) {
+    setPrincipal(inputs.principal);
+    setAnnualRate(inputs.annualRate);
+    setYears(inputs.years);
+    setRepaymentType(inputs.repaymentType);
+    runCalculation(inputs);
   }
 
   return (
@@ -209,6 +234,8 @@ export default function LoanCalculatorPage() {
           </details>
         </div>
       )}
+
+      <HistoryList history={history} onSelect={handleSelectHistory} />
 
       <section className="mt-10 space-y-3 text-sm leading-6 text-zinc-600">
         <h2 className="text-base font-semibold text-zinc-800">
