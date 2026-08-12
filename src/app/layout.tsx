@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   description: "연봉 실수령액, 대출이자 등 재테크 계산기와 환율·금리 정보를 한 곳에서.",
   verification: {
     google: "qE0FgXC0k-U_WNA2YFi0U9vm_28JJOjjTMVbOHvQxOM",
+    other: {
+      "naver-site-verification": "1a28793a7c66c0ffe9fdf9dd5eb112c6e77cec72",
+    },
   },
 };
 
