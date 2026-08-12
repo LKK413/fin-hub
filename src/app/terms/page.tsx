@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "이용약관 | 핀허브",
+  title: "이용약관 | Reko",
 };
 
 export default function TermsPage() {
@@ -14,7 +14,7 @@ export default function TermsPage() {
             제1조 (목적)
           </h2>
           <p className="mt-2">
-            이 약관은 핀허브(이하 &quot;사이트&quot;)가 제공하는 재테크
+            이 약관은 Reko(이하 &quot;사이트&quot;)가 제공하는 재테크
             계산기 및 금융 정보 서비스(이하 &quot;서비스&quot;)의 이용과
             관련하여 사이트와 이용자 간의 권리, 의무 및 책임사항을
             규정함을 목적으로 합니다.

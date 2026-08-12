@@ -20,7 +20,7 @@ export default function Header() {
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zinc-900 text-amber-400">
             <PiggyBank className="h-4 w-4" strokeWidth={1.75} />
           </span>
-          핀허브
+          Reko
         </a>
 
         <nav className="hidden gap-6 text-sm font-medium text-zinc-500 sm:flex">

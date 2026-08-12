@@ -48,7 +48,7 @@ export default function Home() {
           </p>
           <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
             복잡한 재테크 계산,
-            <br className="sm:hidden" /> 핀허브가 대신합니다
+            <br className="sm:hidden" /> Reko가 대신합니다
           </h1>
           <p className="mx-auto mt-5 max-w-md text-zinc-400">
             연봉, 대출, 퇴직금까지 — 몇 초 안에 정확한 예상 금액을 확인하세요.

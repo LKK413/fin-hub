@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "개인정보처리방침 | 핀허브",
+  title: "개인정보처리방침 | Reko",
 };
 
 export default function PrivacyPage() {
@@ -14,7 +14,7 @@ export default function PrivacyPage() {
             1. 수집하는 정보 및 목적
           </h2>
           <p className="mt-2">
-            핀허브(이하 &quot;사이트&quot;)는 계산기 및 정보 제공 서비스를
+            Reko(이하 &quot;사이트&quot;)는 계산기 및 정보 제공 서비스를
             제공하며, 회원가입 없이 이용할 수 있습니다. 계산기에 입력한
             값(연봉, 대출금액 등)은 서버로 전송되거나 저장되지 않고
             브라우저에서만 계산됩니다. 사이트 이용 과정에서 접속 로그, IP

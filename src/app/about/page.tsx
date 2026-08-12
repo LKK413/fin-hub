@@ -1,15 +1,15 @@
 export const metadata = {
-  title: "사이트 소개 | 핀허브",
+  title: "사이트 소개 | Reko",
 };
 
 export default function AboutPage() {
   return (
     <div className="mx-auto w-full max-w-2xl flex-1 px-4 py-12">
-      <h1 className="text-2xl font-bold">핀허브 소개</h1>
+      <h1 className="text-2xl font-bold">Reko 소개</h1>
 
       <div className="mt-8 space-y-4 text-sm leading-6 text-zinc-700">
         <p>
-          핀허브는 연봉, 대출이자 등 실생활에 필요한 재테크 계산을 빠르고
+          Reko는 연봉, 대출이자 등 실생활에 필요한 재테크 계산을 빠르고
           정확하게 할 수 있도록 돕는 계산기 모음 사이트입니다. 복잡한
           세금·보험료 계산 방식을 몰라도 몇 가지 정보만 입력하면 바로
           결과를 확인할 수 있습니다.
