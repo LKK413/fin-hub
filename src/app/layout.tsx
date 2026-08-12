@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Gowun_Batang } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Header from "@/components/Header";
 import "./globals.css";
 
@@ -60,6 +61,7 @@ export default function RootLayout({
             <a href="/terms" className="transition-colors hover:text-amber-400">이용약관</a>
           </nav>
         </footer>
+        <Analytics />
       </body>
     </html>
   );
