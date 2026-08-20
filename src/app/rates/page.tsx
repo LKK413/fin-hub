@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import { RefreshCw } from "lucide-react";
 import { getLatestExchangeRates } from "@/lib/rates/exchange";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 // 하루 1회 수집되는 환율 데이터를 재배포 없이 반영하기 위한 주기적 재검증
 export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  title: "오늘의 환율 | Reko",
+  description:
+    "한국수출입은행 매매기준율을 매일 자동으로 갱신하는 실시간 환율 정보.",
+};
 
 export default async function RatesPage() {
   const { baseDate, rates } = await getLatestExchangeRates();
