@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/calculator/loan", label: "대출이자 계산기" },
   { href: "/calculator/severance", label: "퇴직금 계산기" },
   { href: "/rates", label: "오늘의 환율" },
+  { href: "/articles", label: "정보" },
 ];
 
 export default function Header() {

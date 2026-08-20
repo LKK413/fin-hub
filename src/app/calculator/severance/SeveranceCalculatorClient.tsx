@@ -227,6 +227,17 @@ export default function SeveranceCalculatorClient() {
           참고용 추정치이며, 실제 지급액은 회사의 임금 규정이나 통상임금
           비교 등에 따라 달라질 수 있습니다.
         </p>
+        <p>
+          이 계산기는 세전 퇴직금을 계산합니다. 실제로 세금을 얼마나 떼는지
+          궁금하다면{" "}
+          <a
+            href="/articles/severance-tax-explained"
+            className="text-amber-600 underline hover:text-amber-700"
+          >
+            퇴직소득세 완전정리
+          </a>
+          도 참고해보세요.
+        </p>
       </section>
 
       <AdUnit slot="8944805429" />

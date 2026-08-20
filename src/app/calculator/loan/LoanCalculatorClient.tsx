@@ -259,6 +259,16 @@ export default function LoanCalculatorClient() {
           변동금리, 거치기간 등은 반영하지 않습니다. 실제 상환 스케줄은
           금융기관 대출 약정에 따라 다를 수 있습니다.
         </p>
+        <p>
+          두 방식의 총이자를 실제 숫자로 비교해보고 싶다면{" "}
+          <a
+            href="/articles/loan-repayment-comparison"
+            className="text-amber-600 underline hover:text-amber-700"
+          >
+            원리금균등 vs 원금균등 비교 글
+          </a>
+          도 참고해보세요.
+        </p>
       </section>
 
       <AdUnit slot="8944805429" />

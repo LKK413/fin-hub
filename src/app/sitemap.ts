@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { articles } from "@/lib/articles";
 
 const BASE_URL = "https://www.reko.co.kr";
 
@@ -9,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/calculator/loan", changeFrequency: "monthly" as const, priority: 0.8 },
     { path: "/calculator/severance", changeFrequency: "monthly" as const, priority: 0.8 },
     { path: "/rates", changeFrequency: "daily" as const, priority: 0.8 },
+    { path: "/articles", changeFrequency: "weekly" as const, priority: 0.7 },
+    ...articles.map((article) => ({
+      path: `/articles/${article.slug}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     { path: "/about", changeFrequency: "yearly" as const, priority: 0.3 },
     { path: "/privacy", changeFrequency: "yearly" as const, priority: 0.1 },
     { path: "/terms", changeFrequency: "yearly" as const, priority: 0.1 },

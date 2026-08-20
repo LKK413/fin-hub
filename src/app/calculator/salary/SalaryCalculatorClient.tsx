@@ -205,6 +205,16 @@ export default function SalaryCalculatorClient() {
           회사의 급여 규정이나 국세청 간이세액표에 따라 다소 차이가 날 수
           있습니다. 이 계산기는 참고용 추정치를 제공합니다.
         </p>
+        <p>
+          연봉 구간별 실수령액이 궁금하다면{" "}
+          <a
+            href="/articles/salary-net-pay-table-2026"
+            className="text-amber-600 underline hover:text-amber-700"
+          >
+            2026년 연봉 실수령액표
+          </a>
+          도 참고해보세요.
+        </p>
       </section>
 
       <AdUnit slot="8944805429" />
