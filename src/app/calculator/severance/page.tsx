@@ -9,6 +9,7 @@ import {
 import { useCalculationHistory } from "@/lib/useCalculationHistory";
 import { HistoryList } from "@/components/HistoryList";
 import { CountUpNumber } from "@/components/CountUpNumber";
+import { AdUnit } from "@/components/AdUnit";
 
 function formatWon(value: number): string {
   return value.toLocaleString("ko-KR") + "원";
@@ -227,6 +228,8 @@ export default function SeveranceCalculatorPage() {
           비교 등에 따라 달라질 수 있습니다.
         </p>
       </section>
+
+      <AdUnit slot="8944805429" />
     </div>
   );
 }

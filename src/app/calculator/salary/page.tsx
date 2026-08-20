@@ -6,6 +6,7 @@ import { calculateSalary, type SalaryResult } from "@/lib/calculators/salary";
 import { useCalculationHistory } from "@/lib/useCalculationHistory";
 import { HistoryList } from "@/components/HistoryList";
 import { CountUpNumber } from "@/components/CountUpNumber";
+import { AdUnit } from "@/components/AdUnit";
 
 function formatWon(value: number): string {
   return value.toLocaleString("ko-KR") + "원";
@@ -205,6 +206,8 @@ export default function SalaryCalculatorPage() {
           있습니다. 이 계산기는 참고용 추정치를 제공합니다.
         </p>
       </section>
+
+      <AdUnit slot="8944805429" />
     </div>
   );
 }
