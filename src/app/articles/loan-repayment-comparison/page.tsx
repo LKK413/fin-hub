@@ -10,6 +10,7 @@ const article = getArticle("loan-repayment-comparison")!;
 export const metadata: Metadata = {
   title: `${article.title} | Reko`,
   description: article.description,
+  alternates: { canonical: "/articles/loan-repayment-comparison" },
 };
 
 function formatWon(value: number): string {

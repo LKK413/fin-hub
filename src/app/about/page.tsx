@@ -1,5 +1,6 @@
 export const metadata = {
   title: "사이트 소개 | Reko",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

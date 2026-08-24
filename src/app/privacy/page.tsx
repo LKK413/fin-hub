@@ -1,5 +1,6 @@
 export const metadata = {
   title: "개인정보처리방침 | Reko",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

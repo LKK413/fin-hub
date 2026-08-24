@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { Banknote, Landmark, Briefcase, RefreshCw, ArrowRight } from "lucide-react";
 import type { ComponentType } from "react";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const calculators: {
   href: string;

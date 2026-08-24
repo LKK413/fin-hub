@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "오늘의 환율 | Reko",
   description:
     "한국수출입은행 매매기준율을 매일 자동으로 갱신하는 실시간 환율 정보.",
+  alternates: { canonical: "/rates" },
 };
 
 export default async function RatesPage() {

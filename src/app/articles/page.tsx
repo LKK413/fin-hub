@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "정보 | Reko",
   description:
     "연봉, 퇴직금, 대출 상환까지 — 재테크 계산에 필요한 배경지식을 정리했습니다.",
+  alternates: { canonical: "/articles" },
 };
 
 export default function ArticlesPage() {

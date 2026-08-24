@@ -9,6 +9,7 @@ const article = getArticle("severance-tax-explained")!;
 export const metadata: Metadata = {
   title: `${article.title} | Reko`,
   description: article.description,
+  alternates: { canonical: "/articles/severance-tax-explained" },
 };
 
 export default function Page() {

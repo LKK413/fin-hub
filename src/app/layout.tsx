@@ -21,6 +21,7 @@ const serifKr = Gowun_Batang({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.reko.co.kr"),
   title: "Reko — 재테크 계산기 & 금융 정보",
   description: "연봉 실수령액, 대출이자 등 재테크 계산기와 환율·금리 정보를 한 곳에서.",
   verification: {

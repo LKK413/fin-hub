@@ -10,6 +10,7 @@ const article = getArticle("salary-net-pay-table-2026")!;
 export const metadata: Metadata = {
   title: `${article.title} | Reko`,
   description: article.description,
+  alternates: { canonical: "/articles/salary-net-pay-table-2026" },
 };
 
 const SALARY_BRACKETS_10K = [
