@@ -58,7 +58,20 @@ export default function TermsPage() {
 
         <section>
           <h2 className="text-base font-semibold text-zinc-900">
-            제5조 (약관의 변경)
+            제5조 (이용자의 책임)
+          </h2>
+          <p className="mt-2">
+            이용자는 계산기에 입력하는 정보의 정확성에 대해 스스로 책임을
+            지며, 계산 결과를 최종적인 법적·재무적 판단 근거로 사용하기 전에
+            관련 기관이나 전문가를 통해 정확한 금액을 확인해야 합니다.
+            이용자는 서비스를 부정한 목적으로 이용하거나 사이트의 정상적인
+            운영을 방해해서는 안 됩니다.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-base font-semibold text-zinc-900">
+            제6조 (약관의 변경)
           </h2>
           <p className="mt-2">
             본 약관은 관련 법령 및 서비스 정책에 따라 변경될 수 있으며,
@@ -68,7 +81,7 @@ export default function TermsPage() {
 
         <section>
           <h2 className="text-base font-semibold text-zinc-900">
-            제6조 (문의)
+            제7조 (문의)
           </h2>
           <p className="mt-2">
             서비스 이용과 관련한 문의는 contact@reko.co.kr 으로

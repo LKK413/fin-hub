@@ -228,17 +228,124 @@ export default function SeveranceCalculatorClient() {
           비교 등에 따라 달라질 수 있습니다.
         </p>
         <p>
-          이 계산기는 세전 퇴직금을 계산합니다. 실제로 세금을 얼마나 떼는지
-          궁금하다면{" "}
+          이 계산기는 세전 퇴직금을 계산합니다.
+        </p>
+      </section>
+
+      <section className="mt-8 space-y-4 text-sm leading-6 text-zinc-600">
+        <h2 className="text-base font-semibold text-zinc-800">자주 묻는 질문</h2>
+        <div className="space-y-3">
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              1년 미만 근무하면 퇴직금을 받을 수 있나요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              아니요. 근로기준법상 퇴직금은 계속근로기간이 1년 이상인
+              경우에만 지급 대상이 됩니다. 1년 미만 근무했다면 원칙적으로
+              퇴직금이 발생하지 않습니다.
+            </p>
+          </details>
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              아르바이트도 퇴직금을 받을 수 있나요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              네. 고용 형태와 관계없이 계속근로기간 1년 이상, 4주 평균 주
+              소정근로시간 15시간 이상이라는 조건을 충족하면 아르바이트나
+              단시간 근로자도 퇴직금을 받을 수 있습니다.
+            </p>
+          </details>
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              퇴직금은 언제 지급되나요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              근로자퇴직급여보장법에 따라 퇴직일로부터 14일 이내에 지급하는
+              것이 원칙입니다. 자세한 내용은{" "}
+              <a
+                href="/articles/severance-payment-timing"
+                className="text-amber-600 underline hover:text-amber-700"
+              >
+                퇴직금 지급 기준과 지급 시기
+              </a>
+              를 참고해보세요.
+            </p>
+          </details>
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              상여금도 평균임금에 포함되나요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              네. 퇴직 전 1년간 지급된 상여금 총액 중 3/12에 해당하는 금액이
+              평균임금 산정에 포함됩니다. 연차수당도 같은 방식으로 일부만
+              반영됩니다.
+            </p>
+          </details>
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              퇴직금에도 세금이 있나요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              네. 퇴직금은 일반 근로소득세가 아닌 퇴직소득세로 별도 계산되어
+              원천징수됩니다. 계산 방식이 궁금하다면{" "}
+              <a
+                href="/articles/severance-tax-explained"
+                className="text-amber-600 underline hover:text-amber-700"
+              >
+                퇴직소득세 완전정리
+              </a>
+              를 참고해보세요.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <div className="mt-8 rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-xs leading-6 text-zinc-500">
+        <p>계산 기준: 근로기준법 평균임금 산정 방식 · 최종 업데이트: 2026년 8월 27일</p>
+        <p className="mt-1">
+          공식 출처:{" "}
+          <a
+            href="https://www.moel.go.kr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-amber-600"
+          >
+            고용노동부
+          </a>
+          ,{" "}
+          <a
+            href="https://www.comwel.or.kr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-amber-600"
+          >
+            근로복지공단
+          </a>
+        </p>
+        <p className="mt-2">
+          Reko에서 제공하는 계산 결과는 이해를 돕기 위한 참고용 정보이며
+          실제 퇴직금과 차이가 발생할 수 있습니다. 정확한 금액은 회사의
+          임금 규정이나 관련 기관을 통해 확인해 주세요.
+        </p>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-zinc-800">함께 보면 좋은 글</h2>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
           <a
             href="/articles/severance-tax-explained"
-            className="text-amber-600 underline hover:text-amber-700"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
           >
             퇴직소득세 완전정리
           </a>
-          도 참고해보세요.
-        </p>
-      </section>
+          <a
+            href="/articles/severance-payment-timing"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
+          >
+            퇴직금 지급 기준과 지급 시기
+          </a>
+        </div>
+      </div>
 
       <AdUnit slot="8944805429" />
     </div>

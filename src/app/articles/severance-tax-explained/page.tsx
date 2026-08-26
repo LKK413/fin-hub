@@ -12,9 +12,23 @@ export const metadata: Metadata = {
   alternates: { canonical: "/articles/severance-tax-explained" },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.title,
+  description: article.description,
+  datePublished: article.publishedAt,
+  dateModified: article.publishedAt,
+  author: { "@type": "Organization", name: "Reko" },
+};
+
 export default function Page() {
   return (
     <article className="mx-auto w-full max-w-2xl flex-1 px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ArticleHeader article={article} />
 
       <div className="mt-8 space-y-4 text-sm leading-6 text-zinc-700">
@@ -126,6 +140,24 @@ export default function Page() {
           홈택스나 회사 인사팀을 통해 확인하시기 바랍니다.
         </p>
       </section>
+
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-zinc-800">함께 보면 좋은 글</h2>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <Link
+            href="/articles/severance-payment-timing"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
+          >
+            퇴직금 지급 기준과 지급 시기
+          </Link>
+          <Link
+            href="/calculator/severance"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
+          >
+            퇴직금 계산기 바로가기
+          </Link>
+        </div>
+      </div>
 
       <AdUnit slot="8944805429" />
     </article>

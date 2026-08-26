@@ -1,5 +1,5 @@
 // 2025년 기준 요율 — 매년 개정되므로 연 1회 확인 필요
-const RATES = {
+export const RATES = {
   nationalPension: 0.045, // 국민연금 (근로자 부담)
   nationalPensionCapMonthly: 6_370_000, // 기준소득월액 상한
   nationalPensionFloorMonthly: 390_000, // 기준소득월액 하한

@@ -255,21 +255,128 @@ export default function LoanCalculatorClient() {
           금액은 원리금균등상환보다 적습니다.
         </p>
         <p>
-          이 계산기는 고정금리를 가정한 단순 계산이며, 중도상환수수료나
-          변동금리, 거치기간 등은 반영하지 않습니다. 실제 상환 스케줄은
-          금융기관 대출 약정에 따라 다를 수 있습니다.
-        </p>
-        <p>
-          두 방식의 총이자를 실제 숫자로 비교해보고 싶다면{" "}
-          <a
-            href="/articles/loan-repayment-comparison"
-            className="text-amber-600 underline hover:text-amber-700"
-          >
-            원리금균등 vs 원금균등 비교 글
-          </a>
-          도 참고해보세요.
+          이 밖에 <strong>만기일시상환</strong> 방식도 있습니다. 대출 기간
+          동안 이자만 납부하다가 만기에 원금을 한 번에 갚는 방식으로, 이
+          계산기에서는 지원하지 않지만 신용대출 일부나 담보대출에서 종종
+          쓰입니다. 매월 상환 부담은 가장 적은 대신, 만기 시 목돈을 마련해야
+          하고 총이자 부담은 가장 큽니다.
         </p>
       </section>
+
+      <section className="mt-8 space-y-3 text-sm leading-6 text-zinc-600">
+        <h2 className="text-base font-semibold text-zinc-800">
+          대출 계산 시 주의할 점
+        </h2>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>이 계산기는 고정금리를 가정하며, 실제 금융기관 금리와 차이가 있을 수 있습니다.</li>
+          <li>변동금리 대출은 금리 변동 주기마다 상환액이 달라질 수 있습니다.</li>
+          <li>중도상환수수료가 있는 경우 조기 상환 시 추가 비용이 발생할 수 있습니다.</li>
+          <li>인지세, 근저당 설정비 등 대출 실행 시 발생하는 기타 비용은 반영되지 않았습니다.</li>
+          <li>실제 적용 금리는 개인 신용점수와 소득, 금융기관의 우대금리 조건에 따라 달라집니다.</li>
+        </ul>
+      </section>
+
+      <section className="mt-8 space-y-4 text-sm leading-6 text-zinc-600">
+        <h2 className="text-base font-semibold text-zinc-800">자주 묻는 질문</h2>
+        <div className="space-y-3">
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              원금균등과 원리금균등 중 어느 방식이 유리한가요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              총이자만 놓고 보면 원금균등상환이 더 적습니다. 다만 초반 상환
+              부담이 크기 때문에, 매월 일정한 금액을 내며 자금 계획을 세우고
+              싶다면 원리금균등상환이 더 맞을 수 있습니다. 본인의 현금흐름에
+              맞는 방식을 선택하는 것이 중요합니다.
+            </p>
+          </details>
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              금리가 1% 오르면 얼마나 차이가 나나요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              대출금액과 기간에 따라 다르지만, 금액이 크고 기간이 길수록
+              차이가 커집니다. 실제 숫자로 비교한 예시는{" "}
+              <a
+                href="/articles/loan-rate-impact"
+                className="text-amber-600 underline hover:text-amber-700"
+              >
+                대출 금리 1%p 차이 비교 글
+              </a>
+              에서 확인할 수 있습니다.
+            </p>
+          </details>
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              중도상환하면 이자를 줄일 수 있나요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              네, 원금을 미리 갚으면 그만큼 남은 원금에 대한 이자가 줄어들어
+              총이자를 절감할 수 있습니다. 다만 대출 상품에 따라
+              중도상환수수료가 부과될 수 있어, 수수료와 절감되는 이자를 함께
+              비교해보는 것이 좋습니다.
+            </p>
+          </details>
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              대출 계산 결과와 은행 결과가 다른 이유는 무엇인가요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              이 계산기는 고정금리·단리 기준의 표준 계산식을 사용합니다.
+              실제 은행 상환 스케줄은 이자 계산 기준일, 중도상환, 수수료,
+              변동금리 반영 시점 등에 따라 이 계산기와 다소 차이가 날 수
+              있습니다.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <div className="mt-8 rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-xs leading-6 text-zinc-500">
+        <p>계산 기준: 고정금리 단리 계산 · 최종 업데이트: 2026년 8월 27일</p>
+        <p className="mt-1">
+          참고 자료:{" "}
+          <a
+            href="https://www.fss.or.kr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-amber-600"
+          >
+            금융감독원
+          </a>
+          ,{" "}
+          <a
+            href="https://www.fsc.go.kr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-amber-600"
+          >
+            금융위원회
+          </a>
+        </p>
+        <p className="mt-2">
+          Reko에서 제공하는 계산 결과는 이해를 돕기 위한 참고용 정보이며
+          실제 금융기관의 대출 조건과 차이가 발생할 수 있습니다. 정확한
+          조건은 이용하시는 금융기관을 통해 확인해 주세요.
+        </p>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-zinc-800">함께 보면 좋은 글</h2>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <a
+            href="/articles/loan-repayment-comparison"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
+          >
+            원리금균등 vs 원금균등 비교
+          </a>
+          <a
+            href="/articles/loan-rate-impact"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
+          >
+            금리 1%p 차이, 이자는 얼마나?
+          </a>
+        </div>
+      </div>
 
       <AdUnit slot="8944805429" />
     </div>

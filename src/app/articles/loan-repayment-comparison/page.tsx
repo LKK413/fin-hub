@@ -17,6 +17,16 @@ function formatWon(value: number): string {
   return value.toLocaleString("ko-KR") + "원";
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.title,
+  description: article.description,
+  datePublished: article.publishedAt,
+  dateModified: article.publishedAt,
+  author: { "@type": "Organization", name: "Reko" },
+};
+
 export default function Page() {
   const exampleParams = {
     principal: 100_000_000,
@@ -36,6 +46,10 @@ export default function Page() {
 
   return (
     <article className="mx-auto w-full max-w-2xl flex-1 px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ArticleHeader article={article} />
 
       <div className="mt-8 space-y-4 text-sm leading-6 text-zinc-700">
@@ -137,6 +151,24 @@ export default function Page() {
           에서 원금, 금리, 기간을 입력해 두 방식을 바로 비교해보세요.
         </p>
       </section>
+
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-zinc-800">함께 보면 좋은 글</h2>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <Link
+            href="/articles/loan-rate-impact"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
+          >
+            금리 1%p 차이, 이자는 얼마나?
+          </Link>
+          <Link
+            href="/calculator/loan"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
+          >
+            대출이자 계산기 바로가기
+          </Link>
+        </div>
+      </div>
 
       <AdUnit slot="8944805429" />
     </article>

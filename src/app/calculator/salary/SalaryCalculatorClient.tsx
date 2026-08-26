@@ -205,17 +205,129 @@ export default function SalaryCalculatorClient() {
           회사의 급여 규정이나 국세청 간이세액표에 따라 다소 차이가 날 수
           있습니다. 이 계산기는 참고용 추정치를 제공합니다.
         </p>
-        <p>
-          연봉 구간별 실수령액이 궁금하다면{" "}
+      </section>
+
+      <section className="mt-8 space-y-4 text-sm leading-6 text-zinc-600">
+        <h2 className="text-base font-semibold text-zinc-800">자주 묻는 질문</h2>
+        <div className="space-y-3">
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              세전 연봉과 세후 연봉은 무엇이 다른가요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              세전 연봉은 4대보험료와 세금을 공제하기 전 회사와 계약한
+              금액이고, 세후 연봉(실수령액)은 여기서 국민연금·건강보험·
+              고용보험·소득세 등을 뺀 뒤 실제로 통장에 들어오는 금액입니다.
+            </p>
+          </details>
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              식대는 비과세인가요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              회사가 별도 식사를 제공하지 않는 경우, 월 20만원 이하의 식대는
+              비과세로 처리되어 소득세·4대보험 산정에서 제외될 수 있습니다.
+              이 계산기는 입력한 연봉 전체를 과세 대상으로 계산하므로, 비과세
+              항목이 있다면 실제 실수령액은 계산 결과보다 조금 더 많을 수
+              있습니다.
+            </p>
+          </details>
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              상여금도 연봉에 포함되나요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              일반적으로 회사가 안내하는 연봉에는 상여금이 포함되어 있는
+              경우가 많습니다. 다만 상여금 지급 시기에 따라 월별 실수령액이
+              달라질 수 있어, 상여금이 지급되는 달은 다른 달보다 실수령액이
+              많아 보일 수 있습니다.
+            </p>
+          </details>
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              월 실수령액이 매달 달라질 수 있나요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              네. 국민연금 기준소득월액 조정 시기, 상여금·성과급 지급 여부,
+              연말정산에 따른 환급·추가납부 등으로 인해 매달 실수령액이
+              조금씩 달라질 수 있습니다. 이 계산기는 연봉을 12개월로 균등
+              배분했을 때의 평균적인 월 실수령액을 보여줍니다.
+            </p>
+          </details>
+          <details className="group rounded-lg border border-zinc-200 bg-white p-4">
+            <summary className="cursor-pointer list-none font-medium text-zinc-800">
+              퇴직금은 연봉에 포함되나요?
+            </summary>
+            <p className="mt-2 text-zinc-500">
+              아니요. 퇴직금은 재직 중 급여와 별도로, 퇴직 시점에 근속기간과
+              평균임금을 기준으로 계산해 지급됩니다. 예상 퇴직금이 궁금하다면{" "}
+              <a
+                href="/calculator/severance"
+                className="text-amber-600 underline hover:text-amber-700"
+              >
+                퇴직금 계산기
+              </a>
+              를 이용해보세요.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <div className="mt-8 rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-xs leading-6 text-zinc-500">
+        <p>계산 기준: 2025년 4대보험 요율 · 최종 업데이트: 2026년 8월 27일</p>
+        <p className="mt-1">
+          공식 출처:{" "}
+          <a
+            href="https://www.nts.go.kr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-amber-600"
+          >
+            국세청
+          </a>
+          ,{" "}
+          <a
+            href="https://www.nps.or.kr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-amber-600"
+          >
+            국민연금공단
+          </a>
+          ,{" "}
+          <a
+            href="https://www.nhis.or.kr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-amber-600"
+          >
+            국민건강보험공단
+          </a>
+        </p>
+        <p className="mt-2">
+          Reko에서 제공하는 계산 결과는 이해를 돕기 위한 참고용 정보이며
+          실제 급여·세금·보험료와 차이가 발생할 수 있습니다. 정확한 금액은
+          관련 기관 또는 전문가를 통해 확인해 주세요.
+        </p>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-zinc-800">함께 보면 좋은 글</h2>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
           <a
             href="/articles/salary-net-pay-table-2026"
-            className="text-amber-600 underline hover:text-amber-700"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
           >
             2026년 연봉 실수령액표
           </a>
-          도 참고해보세요.
-        </p>
-      </section>
+          <a
+            href="/articles/salary-deductions-guide"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
+          >
+            연봉 공제 항목 총정리
+          </a>
+        </div>
+      </div>
 
       <AdUnit slot="8944805429" />
     </div>

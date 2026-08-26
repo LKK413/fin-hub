@@ -31,6 +31,16 @@ function formatManwonLabel(manwon: number): string {
     : `${eok}억 ${rest.toLocaleString("ko-KR")}만원`;
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: article.title,
+  description: article.description,
+  datePublished: article.publishedAt,
+  dateModified: article.publishedAt,
+  author: { "@type": "Organization", name: "Reko" },
+};
+
 export default function Page() {
   const rows = SALARY_BRACKETS_10K.map((manwon) => {
     const annualGrossSalary = manwon * 10_000;
@@ -44,6 +54,10 @@ export default function Page() {
 
   return (
     <article className="mx-auto w-full max-w-2xl flex-1 px-4 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ArticleHeader article={article} />
 
       <div className="mt-8 space-y-4 text-sm leading-6 text-zinc-700">
@@ -108,6 +122,24 @@ export default function Page() {
           정확한 조건으로 직접 계산해보시는 걸 추천합니다. 4대보험 요율과
           소득세 구간은 매년 개정될 수 있어 이 표는 참고용 추정치입니다.
         </p>
+      </div>
+
+      <div className="mt-8">
+        <h2 className="text-base font-semibold text-zinc-800">함께 보면 좋은 글</h2>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <Link
+            href="/articles/salary-deductions-guide"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
+          >
+            연봉 공제 항목 총정리
+          </Link>
+          <Link
+            href="/calculator/salary"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
+          >
+            연봉 실수령액 계산기 바로가기
+          </Link>
+        </div>
       </div>
 
       <AdUnit slot="8944805429" />

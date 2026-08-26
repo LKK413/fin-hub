@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Banknote, Landmark, Briefcase, RefreshCw, ArrowRight } from "lucide-react";
+import { Banknote, Landmark, Briefcase, RefreshCw, ArrowRight, BookOpen } from "lucide-react";
 import type { ComponentType } from "react";
+import { articles } from "@/lib/articles";
 
 export const metadata: Metadata = {
+  title: "Reko — 연봉·대출·퇴직금 계산기 & 금융 정보",
+  description:
+    "연봉 실수령액, 대출이자, 퇴직금 계산을 한 곳에서. 계산 방식 설명과 자주 묻는 질문까지 함께 제공하는 재테크 계산 서비스입니다.",
   alternates: { canonical: "/" },
 };
 
@@ -91,7 +95,77 @@ export default function Home() {
             );
           })}
         </div>
+
+        <p className="mt-6 text-center text-xs text-zinc-400">
+          계산 결과는 이해를 돕기 위한 참고용 정보이며, 실제 급여·세금·대출
+          조건과 차이가 있을 수 있습니다.
+        </p>
       </div>
+
+      <div className="border-t border-zinc-200 bg-white py-14">
+        <div className="mx-auto max-w-4xl px-4">
+          <h2 className="font-display text-xl font-bold text-zinc-900">
+            Reko는 어떤 서비스인가요?
+          </h2>
+          <div className="mt-4 max-w-2xl space-y-4 text-sm leading-6 text-zinc-600">
+            <p>
+              연봉 협상, 대출 상담, 퇴사를 앞두고 있을 때 &quot;그래서 실제로
+              받는 돈은 얼마일까?&quot;라는 질문에 답하려면 국민연금·건강보험
+              요율부터 소득세 누진세율, 근로기준법상 퇴직금 산정 방식까지
+              여러 정보를 챙겨야 합니다. Reko는 이런 계산을 한 곳에서 끝낼 수
+              있도록 계산기와 계산 방식 설명을 함께 제공합니다.
+            </p>
+            <p>
+              단순히 숫자만 보여주는 대신, 각 계산기 아래에 공제 항목이나
+              상환 방식 같은 배경 지식과 자주 묻는 질문을 정리해 두어서
+              결과를 왜 그렇게 계산했는지도 함께 이해할 수 있도록 만들고
+              있습니다.{" "}
+              <a href="/about" className="underline hover:text-amber-600">
+                Reko 소개 더 보기
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {articles.length > 0 && (
+        <div className="border-t border-zinc-200 bg-zinc-50 py-14">
+          <div className="mx-auto max-w-4xl px-4">
+            <div className="flex items-center gap-2">
+              <BookOpen className="h-5 w-5 text-amber-500" strokeWidth={1.75} />
+              <h2 className="font-display text-xl font-bold text-zinc-900">
+                인기 금융 가이드
+              </h2>
+            </div>
+            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+              {articles.slice(0, 3).map((article) => (
+                <a
+                  key={article.slug}
+                  href={`/articles/${article.slug}`}
+                  className="group block rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-amber-300 hover:shadow-lg hover:shadow-zinc-200/60"
+                >
+                  <p className="text-xs font-medium uppercase tracking-wide text-amber-600">
+                    {article.category}
+                  </p>
+                  <h3 className="mt-1.5 font-display text-sm font-semibold text-zinc-900">
+                    {article.title}
+                  </h3>
+                  <p className="mt-1.5 line-clamp-2 text-xs text-zinc-500">
+                    {article.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+            <a
+              href="/articles"
+              className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-amber-600 hover:text-amber-700"
+            >
+              모든 가이드 보기
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
