@@ -23,7 +23,7 @@ export default function AboutPage() {
           제공되는 모든 계산 결과는 참고용이며, 법적·세무적 효력이 없습니다.
           정확한 금액은 관련 기관의 공식 자료를 확인하시기 바랍니다.
         </p>
-        <p>문의: foruarla@gmail.com</p>
+        <p>문의: contact@reko.co.kr</p>
       </div>
     </div>
   );

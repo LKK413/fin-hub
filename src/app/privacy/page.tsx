@@ -77,7 +77,7 @@ export default function PrivacyPage() {
           <p className="mt-2">
             개인정보 관련 문의사항은 아래 이메일로 연락해 주시기 바랍니다.
           </p>
-          <p className="mt-2">이메일: foruarla@gmail.com</p>
+          <p className="mt-2">이메일: contact@reko.co.kr</p>
         </section>
 
         <section>
