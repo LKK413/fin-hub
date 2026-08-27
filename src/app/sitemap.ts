@@ -11,6 +11,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/calculator/severance", changeFrequency: "monthly" as const, priority: 0.8 },
     { path: "/calculator/severance-tax", changeFrequency: "monthly" as const, priority: 0.8 },
     { path: "/calculator/savings", changeFrequency: "monthly" as const, priority: 0.8 },
+    { path: "/calculator/year-end-tax", changeFrequency: "monthly" as const, priority: 0.8 },
+    { path: "/calculator/pension", changeFrequency: "monthly" as const, priority: 0.8 },
+    { path: "/calculator/unemployment", changeFrequency: "monthly" as const, priority: 0.8 },
+    { path: "/calculator/rent-conversion", changeFrequency: "monthly" as const, priority: 0.8 },
     { path: "/rates", changeFrequency: "daily" as const, priority: 0.8 },
     { path: "/articles", changeFrequency: "weekly" as const, priority: 0.7 },
     ...articles.map((article) => ({

@@ -20,7 +20,7 @@ export const TAX_BRACKETS = [
   { upTo: Infinity, rate: 0.45, deduction: 65_940_000 },
 ];
 
-function earnedIncomeDeduction(grossAnnual: number): number {
+export function earnedIncomeDeduction(grossAnnual: number): number {
   if (grossAnnual <= 5_000_000) return grossAnnual * 0.7;
   if (grossAnnual <= 15_000_000) return 3_500_000 + (grossAnnual - 5_000_000) * 0.4;
   if (grossAnnual <= 45_000_000) return 7_500_000 + (grossAnnual - 15_000_000) * 0.15;
@@ -28,7 +28,7 @@ function earnedIncomeDeduction(grossAnnual: number): number {
   return 14_750_000 + (grossAnnual - 100_000_000) * 0.02;
 }
 
-function earnedIncomeTaxCredit(calculatedTax: number, grossAnnual: number): number {
+export function earnedIncomeTaxCredit(calculatedTax: number, grossAnnual: number): number {
   const base = calculatedTax <= 1_300_000 ? calculatedTax * 0.55 : 715_000 + (calculatedTax - 1_300_000) * 0.3;
   let cap: number;
   if (grossAnnual <= 33_000_000) cap = 740_000;
@@ -39,7 +39,7 @@ function earnedIncomeTaxCredit(calculatedTax: number, grossAnnual: number): numb
 }
 
 // 자녀세액공제 (8세 이상 기본공제대상 자녀, 산출세액에서 직접 차감)
-function childTaxCredit(childrenUnder20: number): number {
+export function childTaxCredit(childrenUnder20: number): number {
   if (childrenUnder20 <= 0) return 0;
   if (childrenUnder20 === 1) return 150_000;
   if (childrenUnder20 === 2) return 350_000;
