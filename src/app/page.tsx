@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import type { ComponentType } from "react";
 import { articles } from "@/lib/articles";
+import { RevealGroup } from "@/components/RevealGroup";
 
 export const metadata: Metadata = {
   title: "Reko — 연봉·대출·퇴직금 계산기 & 금융 정보",
@@ -82,21 +83,30 @@ export default function Home() {
     <div className="flex-1">
       <section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-4xl px-4 py-20 text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-amber-400">
+          <p
+            className="animate-result-in text-xs font-medium uppercase tracking-[0.2em] text-amber-400"
+            style={{ animationDelay: "0ms" }}
+          >
             Personal Finance, Refined
           </p>
-          <h1 className="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
+          <h1
+            className="animate-result-in mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-5xl"
+            style={{ animationDelay: "120ms" }}
+          >
             복잡한 재테크 계산,
             <br className="sm:hidden" /> Reko가 대신합니다
           </h1>
-          <p className="mx-auto mt-5 max-w-md text-zinc-400">
+          <p
+            className="animate-result-in mx-auto mt-5 max-w-md text-zinc-400"
+            style={{ animationDelay: "240ms" }}
+          >
             연봉, 대출, 퇴직금까지 — 몇 초 안에 정확한 예상 금액을 확인하세요.
           </p>
         </div>
       </section>
 
       <div className="mx-auto w-full max-w-4xl px-4 py-14">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <RevealGroup className="grid gap-4 sm:grid-cols-2" staggerMs={80}>
           {calculators.map((calc) => {
             const Icon = calc.icon;
             return (
@@ -127,7 +137,7 @@ export default function Home() {
               </a>
             );
           })}
-        </div>
+        </RevealGroup>
 
         <p className="mt-6 text-center text-xs text-zinc-400">
           계산 결과는 이해를 돕기 위한 참고용 정보이며, 실제 급여·세금·대출
@@ -170,7 +180,7 @@ export default function Home() {
                 인기 금융 가이드
               </h2>
             </div>
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            <RevealGroup className="mt-6 grid gap-4 sm:grid-cols-3" staggerMs={90}>
               {articles.slice(0, 3).map((article) => (
                 <a
                   key={article.slug}
@@ -188,7 +198,7 @@ export default function Home() {
                   </p>
                 </a>
               ))}
-            </div>
+            </RevealGroup>
             <a
               href="/articles"
               className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-amber-600 hover:text-amber-700"
