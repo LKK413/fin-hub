@@ -7,6 +7,7 @@ import {
   type LoanResult,
   type RepaymentType,
 } from "@/lib/calculators/loan";
+import { formatNumberInput } from "@/lib/formatNumberInput";
 import { useCalculationHistory } from "@/lib/useCalculationHistory";
 import { HistoryList } from "@/components/HistoryList";
 import { CountUpNumber } from "@/components/CountUpNumber";
@@ -24,7 +25,7 @@ interface LoanInputs {
 }
 
 export default function LoanCalculatorClient() {
-  const [principal, setPrincipal] = useState("100000000");
+  const [principal, setPrincipal] = useState("100,000,000");
   const [annualRate, setAnnualRate] = useState("4.5");
   const [years, setYears] = useState("30");
   const [repaymentType, setRepaymentType] =
@@ -88,9 +89,9 @@ export default function LoanCalculatorClient() {
             type="text"
             inputMode="numeric"
             value={principal}
-            onChange={(e) => setPrincipal(e.target.value)}
+            onChange={(e) => setPrincipal(formatNumberInput(e.target.value))}
             className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
-            placeholder="예: 100000000"
+            placeholder="예: 100,000,000"
           />
         </div>
 

@@ -6,6 +6,7 @@ import {
   calculateSeverance,
   type SeveranceResult,
 } from "@/lib/calculators/severance";
+import { formatNumberInput } from "@/lib/formatNumberInput";
 import { useCalculationHistory } from "@/lib/useCalculationHistory";
 import { HistoryList } from "@/components/HistoryList";
 import { CountUpNumber } from "@/components/CountUpNumber";
@@ -26,7 +27,7 @@ interface SeveranceInputs {
 export default function SeveranceCalculatorClient() {
   const [joinDate, setJoinDate] = useState("2023-01-01");
   const [resignDate, setResignDate] = useState("2026-07-30");
-  const [threeMonthWageTotal, setThreeMonthWageTotal] = useState("12000000");
+  const [threeMonthWageTotal, setThreeMonthWageTotal] = useState("12,000,000");
   const [annualBonusTotal, setAnnualBonusTotal] = useState("0");
   const [annualLeaveAllowance, setAnnualLeaveAllowance] = useState("0");
   const [result, setResult] = useState<SeveranceResult | null>(null);
@@ -122,9 +123,9 @@ export default function SeveranceCalculatorClient() {
             type="text"
             inputMode="numeric"
             value={threeMonthWageTotal}
-            onChange={(e) => setThreeMonthWageTotal(e.target.value)}
+            onChange={(e) => setThreeMonthWageTotal(formatNumberInput(e.target.value))}
             className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
-            placeholder="예: 12000000"
+            placeholder="예: 12,000,000"
           />
         </div>
 
@@ -137,7 +138,7 @@ export default function SeveranceCalculatorClient() {
               type="text"
               inputMode="numeric"
               value={annualBonusTotal}
-              onChange={(e) => setAnnualBonusTotal(e.target.value)}
+              onChange={(e) => setAnnualBonusTotal(formatNumberInput(e.target.value))}
               className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
             />
           </div>
@@ -149,7 +150,7 @@ export default function SeveranceCalculatorClient() {
               type="text"
               inputMode="numeric"
               value={annualLeaveAllowance}
-              onChange={(e) => setAnnualLeaveAllowance(e.target.value)}
+              onChange={(e) => setAnnualLeaveAllowance(formatNumberInput(e.target.value))}
               className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
             />
           </div>

@@ -8,6 +8,7 @@ import {
   type InterestType,
   type SavingsResult,
 } from "@/lib/calculators/savings";
+import { formatNumberInput } from "@/lib/formatNumberInput";
 import { useCalculationHistory } from "@/lib/useCalculationHistory";
 import { HistoryList } from "@/components/HistoryList";
 import { CountUpNumber } from "@/components/CountUpNumber";
@@ -27,7 +28,7 @@ interface SavingsInputs {
 
 export default function SavingsCalculatorClient() {
   const [mode, setMode] = useState<SavingsMode>("installment");
-  const [amount, setAmount] = useState("500000");
+  const [amount, setAmount] = useState("500,000");
   const [annualRate, setAnnualRate] = useState("3.5");
   const [months, setMonths] = useState("12");
   const [interestType, setInterestType] = useState<InterestType>("simple");
@@ -124,9 +125,9 @@ export default function SavingsCalculatorClient() {
             type="text"
             inputMode="numeric"
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => setAmount(formatNumberInput(e.target.value))}
             className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
-            placeholder={mode === "lumpsum" ? "예: 10000000" : "예: 500000"}
+            placeholder={mode === "lumpsum" ? "예: 10,000,000" : "예: 500,000"}
           />
         </div>
 

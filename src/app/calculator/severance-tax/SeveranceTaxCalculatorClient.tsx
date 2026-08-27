@@ -6,6 +6,7 @@ import {
   calculateSeveranceTax,
   type SeveranceTaxResult,
 } from "@/lib/calculators/severanceTax";
+import { formatNumberInput } from "@/lib/formatNumberInput";
 import { useCalculationHistory } from "@/lib/useCalculationHistory";
 import { HistoryList } from "@/components/HistoryList";
 import { CountUpNumber } from "@/components/CountUpNumber";
@@ -24,7 +25,7 @@ interface SeveranceTaxInputs {
 export default function SeveranceTaxCalculatorClient() {
   const [joinDate, setJoinDate] = useState("2016-01-01");
   const [resignDate, setResignDate] = useState("2026-07-30");
-  const [severancePay, setSeverancePay] = useState("50000000");
+  const [severancePay, setSeverancePay] = useState("50,000,000");
   const [result, setResult] = useState<SeveranceTaxResult | null>(null);
   const { history, addEntry } =
     useCalculationHistory<SeveranceTaxInputs>("severance-tax");
@@ -109,9 +110,9 @@ export default function SeveranceTaxCalculatorClient() {
             type="text"
             inputMode="numeric"
             value={severancePay}
-            onChange={(e) => setSeverancePay(e.target.value)}
+            onChange={(e) => setSeverancePay(formatNumberInput(e.target.value))}
             className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
-            placeholder="예: 50000000"
+            placeholder="예: 50,000,000"
           />
           <p className="mt-1 text-xs text-zinc-400">
             정확한 금액을 모른다면{" "}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Banknote } from "lucide-react";
 import { calculateSalary, type SalaryResult } from "@/lib/calculators/salary";
+import { formatNumberInput } from "@/lib/formatNumberInput";
 import { useCalculationHistory } from "@/lib/useCalculationHistory";
 import { HistoryList } from "@/components/HistoryList";
 import { CountUpNumber } from "@/components/CountUpNumber";
@@ -19,7 +20,7 @@ interface SalaryInputs {
 }
 
 export default function SalaryCalculatorClient() {
-  const [annualSalary, setAnnualSalary] = useState("50000000");
+  const [annualSalary, setAnnualSalary] = useState("50,000,000");
   const [dependents, setDependents] = useState("1");
   const [childrenUnder20, setChildrenUnder20] = useState("0");
   const [result, setResult] = useState<SalaryResult | null>(null);
@@ -77,9 +78,9 @@ export default function SalaryCalculatorClient() {
             type="text"
             inputMode="numeric"
             value={annualSalary}
-            onChange={(e) => setAnnualSalary(e.target.value)}
+            onChange={(e) => setAnnualSalary(formatNumberInput(e.target.value))}
             className="mt-1 w-full rounded-lg border border-zinc-300 px-3 py-2 text-right outline-none transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
-            placeholder="예: 50000000"
+            placeholder="예: 50,000,000"
           />
         </div>
 
