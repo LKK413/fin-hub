@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Banknote, Landmark, Briefcase, RefreshCw, ArrowRight, BookOpen } from "lucide-react";
+import { Banknote, HandCoins, Briefcase, RefreshCw, ArrowRight, BookOpen } from "lucide-react";
 import type { ComponentType } from "react";
 import { articles } from "@/lib/articles";
 
@@ -30,8 +30,8 @@ const calculators: {
     href: "/calculator/loan",
     title: "대출이자 계산기",
     description: "원리금균등·원금균등 상환 방식별 월 상환액을 비교합니다.",
-    icon: Landmark,
-    iconAnimationClass: "animate-icon-pulse",
+    icon: HandCoins,
+    iconAnimationClass: "animate-icon-coin-drop",
     available: true,
   },
   {

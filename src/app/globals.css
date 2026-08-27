@@ -25,14 +25,16 @@ body {
   animation: result-in 0.4s ease-out;
 }
 
+/* 계산기 카드 아이콘 애니메이션 — 카드에 마우스를 올렸을 때만 동작 */
+
 /* 오늘의 환율 — 새로고침 아이콘이 실제로 돌아가는 것처럼 */
 @keyframes icon-spin {
   to {
     transform: rotate(360deg);
   }
 }
-.animate-icon-spin {
-  animation: icon-spin 3s linear infinite;
+.group:hover .animate-icon-spin {
+  animation: icon-spin 1s linear infinite;
 }
 
 /* 연봉 — 지폐가 뒤집히듯 */
@@ -44,8 +46,8 @@ body {
     transform: rotateY(180deg);
   }
 }
-.animate-icon-flip {
-  animation: icon-flip 3.6s ease-in-out infinite;
+.group:hover .animate-icon-flip {
+  animation: icon-flip 1.4s ease-in-out infinite;
 }
 
 /* 퇴직금 — 서류가방이 손잡이에 매달려 흔들리듯 */
@@ -57,29 +59,35 @@ body {
     transform: rotate(10deg);
   }
 }
-.animate-icon-swing {
+.group:hover .animate-icon-swing {
   transform-origin: top center;
-  animation: icon-swing 2.4s ease-in-out infinite;
+  animation: icon-swing 0.9s ease-in-out infinite;
 }
 
-/* 대출 — 은행 건물이 안정적으로 숨쉬듯 */
-@keyframes icon-pulse {
+/* 대출 — 손에 코인이 떨어지듯 */
+@keyframes icon-coin-drop {
   0%, 100% {
-    transform: scale(1);
+    transform: translateY(0);
   }
-  50% {
-    transform: scale(1.1);
+  25% {
+    transform: translateY(-3px);
+  }
+  45% {
+    transform: translateY(1px);
+  }
+  65% {
+    transform: translateY(-1px);
   }
 }
-.animate-icon-pulse {
-  animation: icon-pulse 2.6s ease-in-out infinite;
+.group:hover .animate-icon-coin-drop {
+  animation: icon-coin-drop 0.9s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-icon-spin,
-  .animate-icon-flip,
-  .animate-icon-swing,
-  .animate-icon-pulse {
+  .group:hover .animate-icon-spin,
+  .group:hover .animate-icon-flip,
+  .group:hover .animate-icon-swing,
+  .group:hover .animate-icon-coin-drop {
     animation: none;
   }
 }
