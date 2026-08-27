@@ -136,8 +136,16 @@ export default function Page() {
             퇴직금 계산기
           </Link>
           는 세전 퇴직금(회사가 지급하는 총액)을 계산하는 도구이며, 이 글에서
-          설명한 퇴직소득세는 별도로 원천징수됩니다. 정확한 세액은 국세청
-          홈택스나 회사 인사팀을 통해 확인하시기 바랍니다.
+          설명한 퇴직소득세는 별도로 원천징수됩니다. 세전 퇴직금을 알고
+          있다면{" "}
+          <Link
+            href="/calculator/severance-tax"
+            className="text-amber-600 underline hover:text-amber-700"
+          >
+            퇴직소득세 계산기
+          </Link>
+          에서 위 계산 과정을 그대로 자동으로 계산해볼 수 있습니다. 정확한
+          세액은 국세청 홈택스나 회사 인사팀을 통해 확인하시기 바랍니다.
         </p>
       </section>
 

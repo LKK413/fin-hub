@@ -8,8 +8,8 @@ export const RATES = {
   employmentInsurance: 0.009, // 고용보험
 };
 
-// 소득세 기본세율 (연 과세표준 기준, 8단계)
-const TAX_BRACKETS = [
+// 소득세 기본세율 (연 과세표준 기준, 8단계) — 소득세법 제55조. 근로소득세·퇴직소득세 공통 적용.
+export const TAX_BRACKETS = [
   { upTo: 14_000_000, rate: 0.06, deduction: 0 },
   { upTo: 50_000_000, rate: 0.15, deduction: 1_260_000 },
   { upTo: 88_000_000, rate: 0.24, deduction: 5_760_000 },

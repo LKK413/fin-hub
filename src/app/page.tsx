@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
-import { Banknote, HandCoins, Briefcase, RefreshCw, ArrowRight, BookOpen } from "lucide-react";
+import {
+  Banknote,
+  HandCoins,
+  Briefcase,
+  Receipt,
+  Vault,
+  RefreshCw,
+  ArrowRight,
+  BookOpen,
+} from "lucide-react";
 import type { ComponentType } from "react";
 import { articles } from "@/lib/articles";
 
@@ -40,6 +49,22 @@ const calculators: {
     description: "평균임금 기준 예상 퇴직금을 계산합니다.",
     icon: Briefcase,
     iconAnimationClass: "animate-icon-swing",
+    available: true,
+  },
+  {
+    href: "/calculator/severance-tax",
+    title: "퇴직소득세 계산기",
+    description: "근속연수공제를 반영한 세후 실수령 퇴직금을 계산합니다.",
+    icon: Receipt,
+    iconAnimationClass: "animate-icon-stamp",
+    available: true,
+  },
+  {
+    href: "/calculator/savings",
+    title: "예금·적금 이자 계산기",
+    description: "단리·복리 방식별 세전·세후 이자를 계산합니다.",
+    icon: Vault,
+    iconAnimationClass: "animate-icon-dial-turn",
     available: true,
   },
   {

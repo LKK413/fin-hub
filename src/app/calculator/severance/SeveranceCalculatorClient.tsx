@@ -287,14 +287,14 @@ export default function SeveranceCalculatorClient() {
             </summary>
             <p className="mt-2 text-zinc-500">
               네. 퇴직금은 일반 근로소득세가 아닌 퇴직소득세로 별도 계산되어
-              원천징수됩니다. 계산 방식이 궁금하다면{" "}
+              원천징수됩니다. 위에서 계산한 세전 퇴직금으로{" "}
               <a
-                href="/articles/severance-tax-explained"
+                href="/calculator/severance-tax"
                 className="text-amber-600 underline hover:text-amber-700"
               >
-                퇴직소득세 완전정리
+                퇴직소득세 계산기
               </a>
-              를 참고해보세요.
+              에서 세후 실수령액을 바로 확인해보세요.
             </p>
           </details>
         </div>
@@ -332,6 +332,12 @@ export default function SeveranceCalculatorClient() {
       <div className="mt-8">
         <h2 className="text-base font-semibold text-zinc-800">함께 보면 좋은 글</h2>
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <a
+            href="/calculator/severance-tax"
+            className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
+          >
+            퇴직소득세 계산기 바로가기
+          </a>
           <a
             href="/articles/severance-tax-explained"
             className="rounded-lg border border-zinc-200 bg-white p-3 text-sm text-zinc-700 hover:border-amber-300"
