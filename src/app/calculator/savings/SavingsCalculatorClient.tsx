@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Vault } from "lucide-react";
+import { Coins } from "lucide-react";
 import {
   calculateSavings,
   type SavingsMode,
@@ -75,7 +75,7 @@ export default function SavingsCalculatorClient() {
     <div className="mx-auto w-full max-w-2xl flex-1 px-4 py-12">
       <div className="flex items-center gap-3">
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-zinc-900 text-amber-400">
-          <Vault className="h-5 w-5" strokeWidth={1.75} />
+          <Coins className="h-5 w-5" strokeWidth={1.75} />
         </span>
         <h1 className="font-display text-2xl font-bold">예금·적금 이자 계산기</h1>
       </div>

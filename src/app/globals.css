@@ -90,20 +90,17 @@ body {
   animation: icon-coin-drop 0.9s ease-in-out infinite;
 }
 
-/* 예금·적금 — 금고 다이얼을 돌리듯 */
-@keyframes icon-dial-turn {
+/* 예금·적금 — 동전이 쌓이며 불어나듯 */
+@keyframes icon-grow {
   0%, 100% {
-    transform: rotate(0deg);
+    transform: translateY(0) scale(1);
   }
-  25% {
-    transform: rotate(-18deg);
-  }
-  75% {
-    transform: rotate(18deg);
+  50% {
+    transform: translateY(-3px) scale(1.15);
   }
 }
-.group:hover .animate-icon-dial-turn {
-  animation: icon-dial-turn 0.9s ease-in-out infinite;
+.group:hover .animate-icon-grow {
+  animation: icon-grow 0.8s ease-in-out infinite;
 }
 
 /* 퇴직소득세 — 영수증에 도장을 찍듯 */
@@ -127,7 +124,7 @@ body {
   .group:hover .animate-icon-flip,
   .group:hover .animate-icon-swing,
   .group:hover .animate-icon-coin-drop,
-  .group:hover .animate-icon-dial-turn,
+  .group:hover .animate-icon-grow,
   .group:hover .animate-icon-stamp {
     animation: none;
   }
