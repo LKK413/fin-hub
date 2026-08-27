@@ -24,3 +24,62 @@ body {
 .animate-result-in {
   animation: result-in 0.4s ease-out;
 }
+
+/* 오늘의 환율 — 새로고침 아이콘이 실제로 돌아가는 것처럼 */
+@keyframes icon-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-icon-spin {
+  animation: icon-spin 3s linear infinite;
+}
+
+/* 연봉 — 지폐가 뒤집히듯 */
+@keyframes icon-flip {
+  0%, 60%, 100% {
+    transform: rotateY(0deg);
+  }
+  30% {
+    transform: rotateY(180deg);
+  }
+}
+.animate-icon-flip {
+  animation: icon-flip 3.6s ease-in-out infinite;
+}
+
+/* 퇴직금 — 서류가방이 손잡이에 매달려 흔들리듯 */
+@keyframes icon-swing {
+  0%, 100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+.animate-icon-swing {
+  transform-origin: top center;
+  animation: icon-swing 2.4s ease-in-out infinite;
+}
+
+/* 대출 — 은행 건물이 안정적으로 숨쉬듯 */
+@keyframes icon-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+.animate-icon-pulse {
+  animation: icon-pulse 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-icon-spin,
+  .animate-icon-flip,
+  .animate-icon-swing,
+  .animate-icon-pulse {
+    animation: none;
+  }
+}

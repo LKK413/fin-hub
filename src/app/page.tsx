@@ -15,6 +15,7 @@ const calculators: {
   title: string;
   description: string;
   icon: ComponentType<{ className?: string; strokeWidth?: number }>;
+  iconAnimationClass: string;
   available: boolean;
 }[] = [
   {
@@ -22,6 +23,7 @@ const calculators: {
     title: "연봉 실수령액 계산기",
     description: "4대보험과 소득세를 반영한 월 실수령액을 계산합니다.",
     icon: Banknote,
+    iconAnimationClass: "animate-icon-flip",
     available: true,
   },
   {
@@ -29,6 +31,7 @@ const calculators: {
     title: "대출이자 계산기",
     description: "원리금균등·원금균등 상환 방식별 월 상환액을 비교합니다.",
     icon: Landmark,
+    iconAnimationClass: "animate-icon-pulse",
     available: true,
   },
   {
@@ -36,6 +39,7 @@ const calculators: {
     title: "퇴직금 계산기",
     description: "평균임금 기준 예상 퇴직금을 계산합니다.",
     icon: Briefcase,
+    iconAnimationClass: "animate-icon-swing",
     available: true,
   },
   {
@@ -43,6 +47,7 @@ const calculators: {
     title: "오늘의 환율",
     description: "한국수출입은행 매매기준율을 매일 자동으로 갱신합니다.",
     icon: RefreshCw,
+    iconAnimationClass: "animate-icon-spin",
     available: true,
   },
 ];
@@ -80,7 +85,10 @@ export default function Home() {
                 }`}
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-zinc-900 text-amber-400">
-                  <Icon className="h-5 w-5" strokeWidth={1.75} />
+                  <Icon
+                    className={`h-5 w-5 ${calc.iconAnimationClass}`}
+                    strokeWidth={1.75}
+                  />
                 </div>
                 <h2 className="mt-4 font-display font-semibold text-zinc-900">{calc.title}</h2>
                 <p className="mt-1.5 text-sm text-zinc-500">{calc.description}</p>
